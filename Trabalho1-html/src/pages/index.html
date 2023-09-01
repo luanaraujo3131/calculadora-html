@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/index.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="background">
+        <h1 id="title">Calculator</h1>
+        <div class="calculator">
+            <p id="result"></p>
+            <table>
+                <tr>
+                    <td><button class="button" onclick="PI()">&pi;</button></td>
+                    <td><button class="button" id="fatorial" onclick="fatorial()">!</button></td>
+                    <td colspan="2"><button class="button button-del" onclick="deleted()">DEL</button></td>
+                </tr>   
+                <tr> 
+                    <td><button class="button button-ac" onclick="cleaned()">AC</button></td>
+                    <td><button class="button button-esp">()</button></td>
+                    <td><button class="button button-esp" onclick="insert('%')">%</button></td>
+                    <td><button class="button button-esp" onclick="insert('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('7')">7</button></td>
+                    <td><button class="button" onclick="insert('8')">8</button></td>
+                    <td><button class="button" onclick="insert('9')">9</button></td>
+                    <td><button class="button button-esp" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('4')">4</button></td>
+                    <td><button class="button" onclick="insert('5')">5</button></td>
+                    <td><button class="button" onclick="insert('6')">6</button></td>
+                    <td><button class="button button-esp" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('1')">1</button></td>
+                    <td><button class="button" onclick="insert('2')">2</button></td>
+                    <td><button class="button" onclick="insert('3')">3</button></td>
+                    <td><button class="button button-esp" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="button button-0" onclick="insert('0')">0</button></td>
+                    <td><button class="button" onclick="insert('.')">.</button></td>
+                    <td><button class="button button-equals" onclick="calculate()">=</button></td>
+                </tr>
+            </table>
+        </div>    
+    </div>    
+</body>
+</html>
+<script>
+    const insert = (param =>{
+        var parameter = document.getElementById('result').innerHTML;
+        document.getElementById('result').innerHTML = parameter + param;
+    })
+
+    function cleaned(){
+        document.getElementById('result').innerHTML = "";
+    }
+
+    function deleted(){
+        var del = document.getElementById('result').innerHTML;
+        document.getElementById('result').innerHTML = del.substring(0, del.length - 1);
+    }
+
+    function calculate(){
+        let number = document.getElementById('result').innerHTML;
+        if(number){ //if(number != null)
+            document.getElementById('result').innerHTML = eval(number);
+        } else{} //don't do anything
+    }
+
+    function PI(){
+        document.getElementById('result').innerHTML = Math.PI.toFixed(10);
+    }
+
+    function fatorial(){
+        let number = parseFloat(document.getElementById('result').innerHTML);
+        let fat = 1;
+        for(let i = number; i > 1; i--){
+            fat *= i;
+        }
+        document.getElementById('result').innerHTML = fat;
+    }
+</script>*/
